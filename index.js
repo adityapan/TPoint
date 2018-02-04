@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 app.set('view engine', 'pug');
-app.set('views','./views');
+app.set('views', './views');
 
 var things = require('./things.js');
 
@@ -12,6 +12,17 @@ app.get('/first_template', function(req, res){
    res.render('first_view');
 });
 
+app.get('/dynamic_view', function(req, res){
+	res.render('dynamic', {
+		name:'Google',
+		url:'http://www.google.com'
+		// , user : { name: "Adi", age: "20"}
+	})
+});
+
+app.get('/components', function(req, res){
+    res.render('content');
+});
 
 app.get('*', function(req,res){
 	res.send("Invalid Url");
