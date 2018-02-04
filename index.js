@@ -1,5 +1,8 @@
 var express = require('express');
 var app = express();
+app.use(express.static('public'));
+app.use(express.static('css'));
+app.use(express.static('scripts'));
 app.set('view engine', 'pug');
 app.set('views', './views');
 
@@ -16,7 +19,7 @@ app.get('/dynamic_view', function(req, res){
 	res.render('dynamic', {
 		name:'Google',
 		url:'http://www.google.com'
-		// , user : { name: "Adi", age: "20"}
+		, user : { name: "Adi", age: "20"}
 	})
 });
 
